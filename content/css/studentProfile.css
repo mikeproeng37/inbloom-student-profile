@@ -1,0 +1,39 @@
+.student-icon-container {
+	display:inline-block;
+}
+.student-info-container {
+	display:inline-block;
+	vertical-align: top;
+}
+.student-info-list {
+	list-style: none;
+}
+.student-data-field {
+	position:relative;
+	padding:0.15em;
+	margin-top:0.2em;
+}
+.student-data-field.edit-mode {
+	border: 0.1em solid;
+	margin-top: 0.6em;
+}
+.student-data-field .remove-btn {
+	display:none;
+}
+.student-data-field.edit-mode .remove-btn {
+	display:inline;
+	position:absolute;
+	top: -1.0em;
+	left: -0.3em;
+}
+.student-data-label {
+	display: inline-block;
+}
+.student-data-value {
+	display: inline-block;
+}
+
+.attendanceChart {
+	width: 400px;
+	height: 300px;
+}

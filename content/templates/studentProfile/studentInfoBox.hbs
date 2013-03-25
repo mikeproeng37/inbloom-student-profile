@@ -1,0 +1,28 @@
+<div class="student-info-box">
+	<div class="student-info-toolbar">
+		<button id="edit-btn" data-edit="true">
+			Edit
+		</button>
+		<button id="done-btn">
+			Done
+		</button>
+	</div>
+	<div class="student-icon-container">
+		<img src="{{studentIconSource}}" class="student-icon"/>
+	</div>
+	<div class="student-info-container">
+		<ul class="student-info-list">
+			{{#each fields}}
+				<li class="student-data-field">
+					<span class="remove-btn">x</span>
+					<div class="student-data-label">
+						{{studentDataLabel}}:
+					</div>
+					<div class="student-data-value">
+						{{studentDataValue}}
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
