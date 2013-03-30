@@ -14,7 +14,7 @@
 	margin-top:0.2em;
 }
 .student-data-field.edit-mode {
-	border: 0.1em solid;
+	border: 1px solid;
 	margin-top: 0.6em;
 }
 .student-data-field .remove-btn {
@@ -25,6 +25,7 @@
 	position:absolute;
 	top: -1.0em;
 	left: -0.3em;
+	cursor: pointer;
 }
 .student-data-label {
 	display: inline-block;
@@ -33,7 +34,7 @@
 	display: inline-block;
 }
 
-.attendanceChart {
+#attendanceChart {
 	width: 400px;
 	height: 300px;
 }

@@ -8,14 +8,19 @@ require(["main"],
                 'studentModel' : 'js/models/student',
                 'studentProfileMainView' : 'js/views/studentProfile/studentProfileMain',
                 'studentInfoBoxView' : 'js/views/studentProfile/studentInfoBox',
-                'jqplot' : 'vendor/jqplot/js/jquery.jqplot.min',
-                'jqPlotDonut' : 'vendor/jqplot/js/jqplot.donutRenderer.min',
-                'jqPlotPie' : 'vendor/jqplot/js/jqplot.pieRenderer.min'
+                'studentAttendanceView' : 'js/views/studentProfile/studentAttendance',
+                
+                // plugins
+                'jRumble' : 'vendor/jrumble/jquery.jrumble.1.3.min',
+                'jQuery.jqplot' : 'vendor/jqplot/js/jquery.jqplot.min',
+                'jQuery.jqplot.DonutRenderer' : 'vendor/jqplot/js/jqplot.donutRenderer.min',
+                'jQuery.jqplot.PieRenderer' : 'vendor/jqplot/js/jqplot.pieRenderer.min'
             },
             shim: {
-                'jqplot' : {
-                    deps: ['jqplotDonut', 'jqplotPie']
-                }
+            	'jRumble' : [],
+                'jQuery.jqplot' : [],
+                'jQuery.jqplot.DonutRenderer': ['jQuery.jqplot'],
+                'jQuery.jqplot.PieRenderer' : ['jQuery.jqplot']
             }
         });
 

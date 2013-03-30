@@ -1,6 +1,8 @@
-define(['jqplot'], 
+define(['jQuery.jqplot.PieRenderer'], 
 	function() {
 		var StudentAttendanceView = Backbone.View.extend({
+			
+			title: 'Student Attendance',
 			/**
 			 * Container element for this view
 			 */
@@ -9,17 +11,17 @@ define(['jqplot'],
 			/**
 			 *
 			 */
-			className: 'attendanceChart',
-
-			/**
-			 * Rendering logic
-			 */
-			 render: function() {
+			id: 'attendanceChart',
+			 
+			initChart: function() {
 			 	var model = this.model,
-			 		attendanceData = model.getAttendanceData();
-
-			 	$(this.el).jqplot(attendanceData,
+			 		attendanceData = model.get('attendance');
+			 		
+			 	$.jqplot(this.id, [attendanceData],
 			 	{
+			 		title: {
+			 			text: this.title
+			 		},
 			 		seriesDefaults: {
 			 			renderer: jQuery.jqplot.PieRenderer,
 			 			rendererOptions: {
@@ -28,8 +30,6 @@ define(['jqplot'],
 			 		},
 			 		legend: { show:true, location: 'e' }
 			 	});
-			 	
-			 	return this;
 			 }
 		});
 
