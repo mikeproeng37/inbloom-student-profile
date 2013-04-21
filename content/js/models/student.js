@@ -24,6 +24,16 @@ define([],
 				}
 
 				return studentInfoObject;
+			},
+			
+			/**
+			 * 
+ 			 * @param {Object} datasetName
+			 */
+			getChartData: function(datasetName) {
+				if (datasetName) {
+					return this.get(datasetName);
+				}
 			}
 
 		});

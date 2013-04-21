@@ -1,7 +1,8 @@
-define(['studentInfoBoxView', 'studentAttendanceView'],
-	function(StudentInfoBoxView, StudentAttendanceView) {
+define(['studentInfoBoxView', 'studentChartView'],
+	function(StudentInfoBoxView, StudentChartView) {
 		var viewMap = {
-			
+			'studentInfoBoxView' : StudentInfoBoxView,
+			'studentChartView' : StudentChartView
 		}
 		
 		/**
@@ -15,17 +16,26 @@ define(['studentInfoBoxView', 'studentAttendanceView'],
 		 *  
  		 * @param {Object} viewName
 		 */
-		ViewFactory.prototype.getView = function(viewName) {
+		ViewFactory.prototype.getView = function(viewId, viewName, options) {
 			var cachedViews = this.cachedViews;
-			if (cachedViews[viewName]) {
-				return cachedViews[viewName];
+			if (cachedViews[viewId]) {
+				return cachedViews[viewId];
 			} else {
-				
+				var newView = this.createView(viewId, viewName, options);
+				cachedViews[viewId] = newView;
+				return newView;
 			}
 		}
 		
-		ViewFactory.prototype.createView = function(viewName) {
-			
+		/**
+		 * 
+ 		 * @param {Object} viewName
+		 */
+		ViewFactory.prototype.createView = function(viewId, viewName, options) {
+			var viewClass = viewMap[viewName],
+				view = new viewClass(options);
+			this.cachedViews[viewId] = view;
+			return view;
 		}
 		
 		return ViewFactory;

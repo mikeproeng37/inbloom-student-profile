@@ -1,47 +1,59 @@
-define(["mustache!templates/studentProfile/studentInfoBox.hbs", 'jRumble'],
+define(['mustache!templates/studentProfile/studentInfoBox.hbs', 'jRumble'],
 	function(studentInfoBoxTemplate) {
+		
 		var studentDataFieldClass = '.student-data-field',
-			editBtn = $('#edit-btn'),
-			doneBtn = $('#done-btn'),
+			editBtn,
+			doneBtn,
+			editControls,
 			editableFields,
 			StudentInfoBoxView = Backbone.View.extend({
-			tagName: 'div',
-
+			tagName: 'div',			
+			
+			/**
+			 * Event handlers for this view
+			 */
 			events: {
-				'click #edit-btn' : 'toggleEditable',
-				'click #done-btn' : 'toggleEditable',
+				'click #btn-edit' : 'toggleEditable',
+				'click #btn-done' : 'toggleEditable',
 				'click .remove-btn' : 'removeDataField'
 			},
-
-			render: function(studentData) {
-				var html = studentInfoBoxTemplate(studentData);
+			
+			/**
+			 * 
+ 			 * @param {Object} studentData
+			 */
+			render: function() {
+				var	fields = ['name', 'grade'],
+					html = studentInfoBoxTemplate(this.model.getStudentInfo(fields));
 				$(this.el).html(html);
+				
+				// cache DOM elements
 				editableFields = $(this.el).find('.student-data-field');
-				this.initRumble();
+				editBtn = $(this.el).find('#btn-edit');
+				editControls = $(this.el).find('.js-edit-controls');
+								
 				return this;
 			},
-
+			
+			/**
+			 * 
+ 			 * @param {Object} event
+			 */
 			toggleEditable: function(event) {
 				var sourceBtn = event.currentTarget,
 					editing = $(sourceBtn).data('edit') === true,
 					triggerAction = editing ? 'startRumble' : 'stopRumble';
 				
-				$(studentDataFieldClass).toggleClass('edit-mode', editing);
-				editableFields.trigger(triggerAction);				
+				editBtn.toggle(!editing);
+				editControls.toggle(editing);
+				
+				$(studentDataFieldClass).toggleClass('edit-mode jiggly', editing);						
 			},
 			
 			/**
-			 *
+			 * 
+ 			 * @param {Object} event
 			 */
-			initRumble: function() {
-				editableFields.jrumble({
-					speed: 100,
-					rotate: 0.2,
-					x: 1,
-					y: 1
-				})
-			},
-			
 			removeDataField: function(event) {
 				var button = event.currentTarget,
 					dataFieldElem = $(button).parent(),

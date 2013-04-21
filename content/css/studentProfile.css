@@ -38,3 +38,47 @@
 	width: 400px;
 	height: 300px;
 }
+
+#testScoresChart {
+	width: 600px;
+	height: 400px;
+}
+
+/* Utility Classes */
+.hidden {
+	display:none;
+}
+
+/* Jiggling CSS */
+.jiggly {
+    -webkit-animation: jiggle 0.2s infinite;
+    -moz-animation-duration: 0.2s;
+    -moz-animation-name: jiggle;
+    -moz-animation-iteration-count: infinite;
+    -webkit-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+}
+
+.jiggly:after {
+    position: relative;
+    left: 52% !important;
+    top: -10px !important;
+}
+
+@-moz-keyframes jiggle {
+    0% {
+        -moz-transform: rotate(-1deg);
+}
+50% {
+    -moz-transform: rotate(1deg);
+}
+}
+
+@-webkit-keyframes jiggle {
+    0% {
+        -webkit-transform: rotate(-1deg);
+}
+50% {
+    -webkit-transform: rotate(1deg);
+}
+}

@@ -1,18 +1,23 @@
 define(['jQuery.jqplot.PieRenderer'], 
 	function() {
 		var StudentAttendanceView = Backbone.View.extend({
-			
-			title: 'Student Attendance',
-			/**
-			 * Container element for this view
-			 */
+			// id of the dom element containing the chart
+			id: 'attendanceChart',
+			// title of the chart
+			title: 'Student Attendance',			
+			// Container element for this view			
 			tagName: 'div',
+			
+			/**
+			 *
+			 */
+			initialize: function() {
+				this.on('renderComplete', this.initChart);
+			},
 
 			/**
 			 *
 			 */
-			id: 'attendanceChart',
-			 
 			initChart: function() {
 			 	var model = this.model,
 			 		attendanceData = model.get('attendance');

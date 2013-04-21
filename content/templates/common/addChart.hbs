@@ -1,0 +1,71 @@
+<div>
+	<div>
+		<div>Chart Title</div>
+		<div>
+			<input id="txt-chart-title" type="text"/>
+		</div>
+	</div>
+	<div>	
+		<div>Chart Type:</div>
+		<div>
+			<select id="sel-chart-type">
+				{{#each chartTypes}}
+					<option value="{{value}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	<div>
+		<div>Student Data:</div>
+		<div>
+			<select id="sel-student-data">
+				{{#each studentData}}
+					<option value="{{value}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+	<div id="chart-specific-options">
+		<div id="line-chart-options">
+			<div>
+				<span>x value:</span>
+				<select id="sel-x-axis-options">
+				</select>
+			</div>
+			<div>
+				<span>y value:</span>
+				<select id="sel-y-axis-options">
+				</select>
+			</div>
+			<div>				
+				<span>Add data series:</span>
+				<button>add</button>
+				<div id="chart-series">
+					
+				</div>
+			</div>
+		</div>
+		<div id="pie-chart-options">
+			<div>
+				<span>show as:</span>
+				<select>
+					{{#each pieDataFormat}}
+						<option value="{{value}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		</div>		
+	</div>
+</div>
+
+<script id="chart-series-template" type="x/handlebars-template">
+	<div>
+		<select>
+			{{#each options}}
+				<option value="{{value}}">{{name}}</option>
+			{{/each}}
+		</select>
+		<span>color:</span>
+		<input type="text" />
+	</div>
+</script>
